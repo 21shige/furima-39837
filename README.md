@@ -1,39 +1,40 @@
 ## users テーブル
 
-| Column         | Type   | Options                   |
-|----------------|--------| --------------------------|
-| nickname       | string | null: false               |
-| email          | string | null: false, unique: true |
-| password       | string | null: false               |
-| last name      | string | null: false               |
-| first name     | string | null: false               |
-| lase name kana | string | null: false               |
-| firs name kana | string | null: false               |
-| birthday       | Data   | null: false               |
+| Column             | Type   | Options                   |
+|--------------------|--------| --------------------------|
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | data   | null: false               |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :buy
+- has_many :buys
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-|-----------------|------------| -------------------------------|
-| title           | string     | null: false                    |
-| explanation     | text       | null: false                    |
-| category        | string     | null: false                    |
-| condition       | string     | null: false                    |
-| coat_burden     | string     | null: false                    |
-| origin_location | string     | null: false                    |
-| shipping_days   | integer    | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+|------------------|------------| -------------------------------|
+| title            | string     | null: false                    |
+| explanation      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| coat_burden_id   | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_days_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 - has_many   :comments
-- belongs_to :user
 - has_one    :buy
+- belongs_to :user
+
 
 
 ## buys テーブル
@@ -54,7 +55,7 @@
 | Column         | Type       | Options                        |
 |----------------|------------| -------------------------------|
 | postal_code    | string     | null: false                    |
-| state          | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | street_address | string     | null: false                    |
 | building_name  | string     |                                |
