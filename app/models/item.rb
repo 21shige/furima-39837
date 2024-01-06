@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :title, presence: true
   validates :explanation, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { only_integer: true, message: "is not a number" }
 
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}  
