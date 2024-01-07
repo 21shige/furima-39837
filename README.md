@@ -24,7 +24,7 @@
 | explanation      | text       | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
-| coat_burden_id   | integer    | null: false                    |
+| cost_burden_id   | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | shipping_days_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
