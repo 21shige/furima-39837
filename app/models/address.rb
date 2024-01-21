@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-  belogns_to :order
+  belongs_to :order
 end
