@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   describe '購入記録の保存' do
-    before do 
+    before do
       user = FactoryBot.create(:user)
       # item = FactoryBot.create(:item)
       # @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
@@ -16,7 +16,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'building_nameは空でも保存できること' do
         @order_address.building_name = ''
         expect(@order_address).to be_valid
-      end        
+      end
     end
 
     context '内容に問題がある場合' do
@@ -53,12 +53,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'telが10桁未満では保存できないこと' do
         @order_address.tel = '090'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel is too short (minimum is 10 characters)")
+        expect(@order_address.errors.full_messages).to include('Tel is too short (minimum is 10 characters)')
       end
       it 'telが11桁以上では保存できないこと' do
         @order_address.tel = '0901234567890'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel is too long (maximum is 11 characters)")
+        expect(@order_address.errors.full_messages).to include('Tel is too long (maximum is 11 characters)')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil

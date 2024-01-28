@@ -22,11 +22,12 @@ class ItemsController < ApplicationController
   def show
     @orders = @item.order
   end
-  
+
   def edit
     if current_user != @item.user
       redirect_to root_path
-    else @item.order.present?
+    else
+      @item.order.present?
       redirect_to root_path
     end
   end
