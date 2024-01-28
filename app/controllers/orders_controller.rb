@@ -2,11 +2,31 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
+    @orders = Order.new
     @order_address = OrderAddress.new
     @item = Item.find(params[:item_id])
-    return if current_user != @item.user
-    redirect_to root_path
+    if @item.order.present?
+      redirect_to root_path
+    else
+      return if current_user != @item.user
+      redirect_to root_path
+    end
   end
+
+
+  # def index
+  #   @orders = Order.new
+  #   @order_address = OrderAddress.new
+  #   @item = Item.find(params[:item_id])
+
+  #   if current_user != @item.user
+  #     redirect_to root_path
+  #   elsif @item.order.present?
+  #     redirect_to root_path
+  #   else
+  #     render :index
+  #   end
+  # end
 
   def create
     @item = Item.find(params[:item_id])
@@ -34,5 +54,5 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 
     )
   end
-  
+
 end
