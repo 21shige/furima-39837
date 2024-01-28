@@ -22,11 +22,6 @@ class ItemsController < ApplicationController
   def show
     @orders = @item.order
   end
-
-  # def edit
-  #   return if current_user == @item.user
-  #   redirect_to root_path
-  # end
   
   def edit
     if current_user != @item.user
