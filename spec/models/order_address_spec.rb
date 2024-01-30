@@ -59,6 +59,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Tel is too long (maximum is 11 characters)')
       end
+      it 'telが半角数字以外が含まれている場合は購入できないこと' do
+        @order_address.tel = '０９０１２３４５６７８'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Tel is not a number')
+      end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil
         @order_address.valid?
