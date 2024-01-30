@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_days
 
   has_many :comments
-  # has_one  :buy
+  has_one  :order
   belongs_to :user
   has_one_attached :image
 
